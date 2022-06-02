@@ -3,24 +3,24 @@
  * You're not allowed to use String.prototype.reverse().
  * Returns the new string.
  */
-function reverseString() {
-
+function reverseString(str) {
+  return str.split("").reverse().join("");
 }
 
-describe('reverseString', function() {
+describe('reverseString', function () {
   const assert = require("chai").assert;
 
-  it('should work for empty string', function() {
+  it('should work for empty string', function () {
     assert.equal(reverseString(""), "");
   });
 
-  it('should work for single-character strings', function() {
+  it('should work for single-character strings', function () {
     assert.equal(reverseString("a"), "a");
     assert.equal(reverseString(" "), " ");
     assert.equal(reverseString("*"), "*");
   });
 
-  it('should work on non-trivial strings', function() {
+  it('should work on non-trivial strings', function () {
     assert.equal(reverseString("cba"), "abc");
     assert.equal(reverseString("foobar"), "raboof");
     assert.equal(reverseString("otatop"), "potato");

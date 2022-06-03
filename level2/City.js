@@ -2,24 +2,37 @@
  * Represents a city. Cities can be "linked" together, meaning that you can reach one city from the other. This is always a symmetric relation, meaning that if you can reach city X from Y, then you can also reach Y from X.
  */
 class City {
+  constructor(name) {
+    this.name = name;
+    this.links = [];
+  }
 
+  isLinked(link) {
+    return this.links.includes(link);
+  }
+  link(city) {
+    if (this.isLinked(city)) return;
+
+    this.links.push(city);
+    city.link(this);
+  }
 }
 
-describe('City', function() {
+describe('City', function () {
   const assert = require('chai').assert;
 
-  it('should remember its name', function() {
+  it('should remember its name', function () {
     assert.equal((new City("Amsterdam")).name, "Amsterdam");
   });
 
-  it('should not be initially linked', function() {
+  it('should not be initially linked', function () {
     let ams = new City("Amsterdam");
     let paris = new City("Paris");
     assert.isFalse(ams.isLinked(paris));
     assert.isFalse(paris.isLinked(ams));
   });
 
-  it('should be able to get linked', function() {
+  it('should be able to get linked', function () {
     let ams = new City("Amsterdam");
     let paris = new City("Paris");
 
@@ -30,7 +43,7 @@ describe('City', function() {
     assert.isTrue(paris.isLinked(ams));
   });
 
-  it('should work with more cities', function() {
+  it('should work with more cities', function () {
     let ams = new City("Amsterdam");
     let london = new City("London");
     let berlin = new City("Berlin");

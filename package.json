@@ -4,7 +4,8 @@
   "description": "Algorithm pracising exercises for the NYCDA Part-time Web Develpment Intensive course.",
   "scripts": {
     "test": "cd $INIT_CWD && mocha --recursive",
-    "test-all": "mocha --recursive level* || exit 0"
+    "test-all": "mocha --recursive level* || exit 0",
+    "mocha": "mocha --recursive level1"
   },
   "author": "Gabor Kozar",
   "dependencies": {
